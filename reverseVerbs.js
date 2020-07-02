@@ -1,32 +1,31 @@
-/**
- * @param {string} s
- * @return {string}
- */
 var reverseVowels = function(s) {
     
   let vowelTank = [];
+  let splitBy = s.split('');
   
-  for(let i=0; i <s.length; i++){
-      if(s[i] === 'a' || s[i] === 'e' || s[i] === 'i'|| s[i] === 'o'|| s[i] === 'u'){
-          let addToVowelTank = vowelTank.push(s[i]);
-      
-          let removeAndReplace = s.splice(s[i],1,0);
-      }
-  }
-  console.log(vowelTank,"vowelTank")
-  
-  
+  for(let i=0; i <splitBy.length; i++){
+      if(splitBy[i] === 'a' || splitBy[i] === 'e' || splitBy[i] === 'i'|| splitBy[i] === 'o'|| splitBy[i] === 'u'){
+          
+          let addToVowelTank = vowelTank.push(splitBy[i]);
+          splitBy[i] = "0"; //replace vowel with "0"
+      };
+  };
 
-  
+let reverseVowelTank = vowelTank.reverse();
+
+
+for (let j =0, k=0; j < splitBy.length, k < reverseVowelTank.length; j++){
+  if (splitBy[j] === '0'){
+     splitBy[j] = reverseVowelTank[k];
+     k++
+  }
+ 
+} 
+return splitBy;
 };
 
-//hello goes to => holle 
 
-
-// leetcode goes to => leotcede 
-// 
-// ltcd => eeoe reverse this string, place a zero at which we plucked the vowel 
-// then go back through it with a reversed input of those vowels 
-
+const st='abcdefghi';
+reverseVowels(st);
 
 
